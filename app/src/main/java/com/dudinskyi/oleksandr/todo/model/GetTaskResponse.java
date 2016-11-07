@@ -7,4 +7,8 @@ import java.util.List;
  */
 public class GetTaskResponse {
     List<Task> data;
+
+    public List<Task> getData() {
+        return data;
+    }
 }

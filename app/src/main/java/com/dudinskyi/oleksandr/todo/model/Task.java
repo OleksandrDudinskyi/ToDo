@@ -7,4 +7,16 @@ public class Task {
     String id;
     String name;
     Integer state;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getState() {
+        return state;
+    }
 }
