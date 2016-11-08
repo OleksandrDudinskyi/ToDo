@@ -4,8 +4,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentPagerAdapter;
 
-import com.dudinskyi.oleksandr.todo.view.DoneTasksFragment;
-import com.dudinskyi.oleksandr.todo.view.PendingTasksFragment;
+import com.dudinskyi.oleksandr.todo.view.fragments.DoneTasksFragment;
+import com.dudinskyi.oleksandr.todo.view.fragments.PendingTasksFragment;
 
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
