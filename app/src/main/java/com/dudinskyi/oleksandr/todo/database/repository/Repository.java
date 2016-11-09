@@ -4,8 +4,6 @@ import com.dudinskyi.oleksandr.todo.database.specification.Specification;
 
 import java.util.List;
 
-import rx.Observable;
-
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
  */
@@ -25,7 +23,6 @@ abstract class Repository<T> {
 
     public abstract T find(Specification specification);
 
-    public abstract Observable<T> rxFind(Specification specification);
-
     public abstract List<T> query(Specification specification);
+
 }

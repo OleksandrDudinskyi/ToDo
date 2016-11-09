@@ -12,4 +12,5 @@
     <string name="task_updated_txt">Tasks was updated</string>
     <string name="add_task_title">Please enter new task name</string>
     <string name="task_hint">My first task</string>
+    <string name="empty_task_txt">Name of task can be empty</string>
 </resources>

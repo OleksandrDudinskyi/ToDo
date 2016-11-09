@@ -12,7 +12,6 @@ import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import rx.Observable;
 
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
@@ -105,11 +104,6 @@ public class TaskRepository extends Repository<Task> {
         Task user = mapper.mapFrom(realmResult);
         realm.close();
         return user;
-    }
-
-    @Override
-    public Observable<Task> rxFind(Specification specification) {
-        return Observable.just(find(specification));
     }
 
     @Override

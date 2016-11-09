@@ -11,6 +11,10 @@ public interface TasksFragmentView extends View {
 
     void addTasks(List<Task> tasks);
 
+    void addTask(Task task);
+
+    void updateTask(Task task);
+
     void showEmptyPlaceHolder();
 
     void hideEmptyPlaceHolder();

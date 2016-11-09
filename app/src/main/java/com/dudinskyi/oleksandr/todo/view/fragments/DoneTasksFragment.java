@@ -1,26 +1,25 @@
 package com.dudinskyi.oleksandr.todo.view.fragments;
 
-import com.dudinskyi.oleksandr.todo.presenter.DoneTaskPresenter;
-import com.dudinskyi.oleksandr.todo.view.DoneTasksView;
+import android.view.Menu;
+import android.view.MenuInflater;
+
+import com.dudinskyi.oleksandr.todo.view.TasksFragmentView;
 
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
  */
-public class DoneTasksFragment extends TasksFragment implements DoneTasksView {
-
-    private DoneTaskPresenter presenter;
+public class DoneTasksFragment extends TasksFragment implements TasksFragmentView {
 
     @Override
     protected void initPresenter() {
-        presenter = new DoneTaskPresenter();
-        presenter.addView(this);
-        presenter.initialize();
-
+        super.initPresenter();
+        presenter.getDoneTasks();
     }
 
     @Override
-    public void onDestroy() {
-        presenter.destroy();
-        super.onDestroy();
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        initMenuItems(menu);
+        addTask.setVisible(false);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

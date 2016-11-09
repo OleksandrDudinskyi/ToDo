@@ -1,14 +1,17 @@
 package com.dudinskyi.oleksandr.todo.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
  */
 public class GetTaskResponse {
-    List<Task> data;
+    @SerializedName("data")
+    private List<TaskModel> data;
 
-    public List<Task> getData() {
+    public List<TaskModel> getData() {
         return data;
     }
 }

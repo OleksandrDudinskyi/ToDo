@@ -11,12 +11,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
  */
 public class NetworkService {
+    private static final String BASE_URL = "https://dl.dropboxusercontent.com";
     private static NetworkService instance;
     private final TaskAPI taskAPI;
 
     private NetworkService() {
         taskAPI = new Retrofit.Builder()
-                .baseUrl("https://dl.dropboxusercontent.com")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(new OkHttpClient.Builder().build())
