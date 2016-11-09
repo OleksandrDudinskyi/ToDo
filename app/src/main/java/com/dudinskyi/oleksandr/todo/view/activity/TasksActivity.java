@@ -15,6 +15,7 @@ import com.dudinskyi.oleksandr.todo.R;
 import com.dudinskyi.oleksandr.todo.presenter.TaskPresenter;
 import com.dudinskyi.oleksandr.todo.view.TasksView;
 import com.dudinskyi.oleksandr.todo.view.adapter.PagerAdapter;
+import com.dudinskyi.oleksandr.todo.view.fragments.AddTaskDialog;
 
 /**
  * @author Oleksandr Dudinskyi (dudinskyj@gmail.com)
@@ -108,6 +109,10 @@ public class TasksActivity extends AppCompatActivity implements TasksView {
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void addNewTask(String taskName) {
+        taskPresenter.addNewTask(taskName);
+    }
+
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         addTask = menu.findItem(R.id.add_task);
@@ -119,6 +124,8 @@ public class TasksActivity extends AppCompatActivity implements TasksView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_task:
+                AddTaskDialog dialogFragment = new AddTaskDialog();
+                dialogFragment.show(getFragmentManager(), dialogFragment.getTag());
                 return true;
             case R.id.remove_task:
                 return true;

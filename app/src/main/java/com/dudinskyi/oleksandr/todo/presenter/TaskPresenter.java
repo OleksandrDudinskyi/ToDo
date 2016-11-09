@@ -3,10 +3,13 @@ package com.dudinskyi.oleksandr.todo.presenter;
 import android.util.Log;
 
 import com.dudinskyi.oleksandr.todo.database.repository.TaskRepository;
+import com.dudinskyi.oleksandr.todo.model.Task;
+import com.dudinskyi.oleksandr.todo.model.TaskState;
 import com.dudinskyi.oleksandr.todo.network.NetworkService;
 import com.dudinskyi.oleksandr.todo.view.TasksView;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -30,6 +33,11 @@ public class TaskPresenter extends Presenter<TasksView> {
     @Override
     public void destroy() {
         compositeSubscription.unsubscribe();
+    }
+
+    public void addNewTask(String taskName) {
+        Task task = new Task(UUID.randomUUID().toString(), taskName, TaskState.PENDING.getStatus());
+        taskRepository.add(task);
     }
 
     public void updateTasks() {

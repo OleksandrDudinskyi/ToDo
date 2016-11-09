@@ -23,4 +23,8 @@ public enum TaskState {
         }
         return UNDEFINED;
     }
+
+    public int getStatus() {
+        return status;
+    }
 }

@@ -10,4 +10,6 @@
     <string name="add_task">Add task</string>
     <string name="remove_task">Remove task</string>
     <string name="task_updated_txt">Tasks was updated</string>
+    <string name="add_task_title">Please enter new task name</string>
+    <string name="task_hint">My first task</string>
 </resources>
