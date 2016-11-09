@@ -50,6 +50,7 @@ public abstract class TasksFragment extends Fragment implements TasksFragmentVie
 
     @Override
     public void addTasks(List<Task> tasks) {
+        recyclerView.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
         adapter.addTasks(tasks);
     }

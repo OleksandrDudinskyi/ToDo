@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ToDo</string>
+    <string name="app_name">To-Do App</string>
     <string name="pending">Pending</string>
     <string name="done">Done</string>
     <string name="task_empty">Task list is empty</string>
@@ -7,4 +7,7 @@
     <string name="message_no_internet">Please connect to internet to update tasks</string>
     <string name="error_try_again_txt">Please try again</string>
     <string name="retry">Retry</string>
+    <string name="add_task">Add task</string>
+    <string name="remove_task">Remove task</string>
+    <string name="task_updated_txt">Tasks was updated</string>
 </resources>

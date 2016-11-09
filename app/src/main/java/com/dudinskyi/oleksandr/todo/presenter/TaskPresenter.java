@@ -37,14 +37,17 @@ public class TaskPresenter extends Presenter<TasksView> {
         compositeSubscription.add(NetworkService.getInstance().getTaskAPI().getTasks()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(getTaskResponse -> taskRepository.update(getTaskResponse.getData()),
-                        throwable -> {
+                .subscribe(getTaskResponse -> {
+                            taskRepository.update(getTaskResponse.getData());
+                            view.onTaskUpdated();
+                        }, throwable -> {
                             Log.e(TAG, "Get tasks error: ", throwable);
                             if (throwable instanceof IOException) {
                                 view.noInternetConnection();
                             } else {
                                 view.onTaskUpdatedError();
                             }
-                        }));
+                        }
+                ));
     }
 }

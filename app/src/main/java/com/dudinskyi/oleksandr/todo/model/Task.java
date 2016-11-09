@@ -25,4 +25,13 @@ public class Task {
     public Integer getState() {
         return state;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", state='" + state + '\'' +
+                '}';
+    }
 }

@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.FavoritesShowCaseActivity">
+
+    <item
+        android:id="@+id/add_task"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/add_task"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/remove_task"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/remove_task"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+</menu>

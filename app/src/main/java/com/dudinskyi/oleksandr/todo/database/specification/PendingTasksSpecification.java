@@ -13,7 +13,6 @@ public class PendingTasksSpecification implements Specification<RealmTaskData> {
                 equalTo(RealmTaskData.stateField, 0).findAll();
     }
 
-
     @Override
     public RealmTaskData toRealmResult(Realm realm) {
         return realm.where(RealmTaskData.class).

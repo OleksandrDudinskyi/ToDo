@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.dudinskyi.oleksandr.todo.R;
@@ -54,7 +55,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     @Override
     public void onBindViewHolder(TaskHolder holder, int position) {
-        holder.taskName.setText(holder.itemView.getContext().getString(R.string.task_name_pattern, position, tasks.get(position).getName()));
+        holder.taskName.setText(holder.itemView.getContext().getString(R.string.task_name_pattern, position + 1, tasks.get(position).getName()));
+//        holder.container.setOnLongClickListener(view -> {});
     }
 
     @Override
@@ -65,9 +67,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     static class TaskHolder extends RecyclerView.ViewHolder {
 
         private TextView taskName;
+        private LinearLayout container;
 
         TaskHolder(View itemView) {
             super(itemView);
+            container = (LinearLayout) itemView.findViewById(R.id.container);
             taskName = (TextView) itemView.findViewById(R.id.task_name);
 
         }
