@@ -21,6 +21,8 @@ public class RealmTaskData extends RealmObject {
     private String id;
     private String name;
     private Integer state;
+    private boolean highlight;
+    private boolean showCancelButton;
 
     public RealmTaskData() {
     }
@@ -37,17 +39,31 @@ public class RealmTaskData extends RealmObject {
         return name;
     }
 
-    public RealmTaskData setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public Integer getState() {
         return state;
     }
 
-    public RealmTaskData setState(Integer state) {
+    public void setState(Integer state) {
         this.state = state;
-        return this;
+    }
+
+    public boolean isHighlight() {
+        return highlight;
+    }
+
+    public void setHighlight(boolean highlight) {
+        this.highlight = highlight;
+    }
+
+    public boolean isShowCancelButton() {
+        return showCancelButton;
+    }
+
+    public void setShowCancelButton(boolean showCancelButton) {
+        this.showCancelButton = showCancelButton;
     }
 }

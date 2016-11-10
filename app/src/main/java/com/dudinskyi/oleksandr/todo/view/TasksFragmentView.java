@@ -20,4 +20,6 @@ public interface TasksFragmentView extends View {
     void hideEmptyPlaceHolder();
 
     void deleteTask(Task task);
+
+    void disableRemove();
 }

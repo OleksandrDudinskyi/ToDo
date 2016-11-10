@@ -3,6 +3,7 @@ package com.dudinskyi.oleksandr.todo.view.fragments;
 import android.view.Menu;
 import android.view.MenuInflater;
 
+import com.dudinskyi.oleksandr.todo.presenter.DoneTaskFragmentPresenter;
 import com.dudinskyi.oleksandr.todo.view.TasksFragmentView;
 
 /**
@@ -12,8 +13,9 @@ public class DoneTasksFragment extends TasksFragment implements TasksFragmentVie
 
     @Override
     protected void initPresenter() {
-        super.initPresenter();
-        presenter.getDoneTasks();
+        presenter = new DoneTaskFragmentPresenter();
+        presenter.addView(this);
+        presenter.initialize();
     }
 
     @Override

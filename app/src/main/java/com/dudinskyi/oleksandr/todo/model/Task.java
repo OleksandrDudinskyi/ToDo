@@ -38,6 +38,10 @@ public class Task {
         return state;
     }
 
+    public void setState(TaskState taskState) {
+        state = taskState.getStatus();
+    }
+
     public boolean isHighlighted() {
         return highlight;
     }

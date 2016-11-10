@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.dudinskyi.oleksandr.todo.R;
+import com.dudinskyi.oleksandr.todo.presenter.PendingTaskFragmentPresenter;
 import com.dudinskyi.oleksandr.todo.view.TasksFragmentView;
 
 /**
@@ -18,8 +19,9 @@ public class PendingTasksFragment extends TasksFragment implements TasksFragment
     public static final int ADD_NEW_TASK_REQUEST_CODE = 0xbc1;
 
     protected void initPresenter() {
-        super.initPresenter();
-        presenter.getPendingTasks();
+        presenter = new PendingTaskFragmentPresenter();
+        presenter.addView(this);
+        presenter.initialize();
     }
 
     @Override
@@ -55,4 +57,9 @@ public class PendingTasksFragment extends TasksFragment implements TasksFragment
         }
     }
 
+    @Override
+    public void disableRemove() {
+        removeTask.setVisible(false);
+        addTask.setVisible(true);
+    }
 }

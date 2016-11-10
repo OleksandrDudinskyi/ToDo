@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.widget.Toast;
 
 import com.dudinskyi.oleksandr.todo.R;
+import com.dudinskyi.oleksandr.todo.presenter.PresenterCache;
+import com.dudinskyi.oleksandr.todo.presenter.PresenterFactory;
 import com.dudinskyi.oleksandr.todo.presenter.TaskActivityPresenter;
 import com.dudinskyi.oleksandr.todo.view.TasksView;
 import com.dudinskyi.oleksandr.todo.view.adapter.PagerAdapter;
@@ -20,10 +22,12 @@ import com.dudinskyi.oleksandr.todo.view.adapter.PagerAdapter;
  */
 public class TasksActivity extends AppCompatActivity implements TasksView {
 
+    private static final String TAG = TasksActivity.class.getName();
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private TaskActivityPresenter taskPresenter;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private PresenterCache presenterCache = PresenterCache.getInstance();
 
     private TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
@@ -41,6 +45,13 @@ public class TasksActivity extends AppCompatActivity implements TasksView {
 
         }
     };
+    private PresenterFactory<TaskActivityPresenter> presenterFactory =
+            () -> {
+                TaskActivityPresenter taskActivityPresenter = new TaskActivityPresenter();
+                taskActivityPresenter.initialize();
+                taskActivityPresenter.updateTasks();
+                return taskActivityPresenter;
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +74,13 @@ public class TasksActivity extends AppCompatActivity implements TasksView {
     }
 
     private void initPresenter() {
-        taskPresenter = new TaskActivityPresenter();
-        taskPresenter.addView(this);
-        taskPresenter.initialize();
-        taskPresenter.updateTasks();
+        taskPresenter = presenterCache.getPresenter(TAG, presenterFactory);
+        taskPresenter.addView(TasksActivity.this);
     }
 
     @Override
     protected void onDestroy() {
         tabLayout.removeOnTabSelectedListener(tabSelectedListener);
-        taskPresenter.destroy();
         super.onDestroy();
     }
 
@@ -84,12 +92,14 @@ public class TasksActivity extends AppCompatActivity implements TasksView {
 
     @Override
     public void onTaskUpdatedError() {
+        swipeRefreshLayout.setRefreshing(false);
         Snackbar.make(swipeRefreshLayout, R.string.error_try_again_txt, Snackbar.LENGTH_LONG).
                 setAction(getString(R.string.retry), v -> taskPresenter.updateTasks()).show();
     }
 
     @Override
     public void noInternetConnection() {
+        swipeRefreshLayout.setRefreshing(false);
         Snackbar.make(swipeRefreshLayout, R.string.message_no_internet, Snackbar.LENGTH_LONG).
                 setAction(getString(R.string.retry), v -> taskPresenter.updateTasks()).show();
     }

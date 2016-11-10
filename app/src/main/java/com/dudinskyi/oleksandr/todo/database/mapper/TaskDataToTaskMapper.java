@@ -10,7 +10,10 @@ public class TaskDataToTaskMapper implements Mapper<RealmTaskData, Task> {
 
     @Override
     public Task mapFrom(RealmTaskData realmTaskData) {
-        return new Task(realmTaskData.getId(), realmTaskData.getName(), realmTaskData.getState());
+        Task task = new Task(realmTaskData.getId(), realmTaskData.getName(), realmTaskData.getState());
+        task.setHighlighted(realmTaskData.isHighlight());
+        task.showCancelButton(realmTaskData.isShowCancelButton());
+        return task;
     }
 
     @Override
@@ -19,6 +22,8 @@ public class TaskDataToTaskMapper implements Mapper<RealmTaskData, Task> {
         realmTaskData.setId(from.getId());
         realmTaskData.setName(from.getName());
         realmTaskData.setState(from.getState());
+        realmTaskData.setHighlight(from.isHighlighted());
+        realmTaskData.setShowCancelButton(from.shouldShowCancelButton());
         return realmTaskData;
     }
 }

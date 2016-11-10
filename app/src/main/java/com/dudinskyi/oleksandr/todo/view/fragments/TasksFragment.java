@@ -74,11 +74,7 @@ public abstract class TasksFragment extends Fragment implements TasksFragmentVie
         presenter.onCancelClick(task);
     }
 
-    protected void initPresenter() {
-        presenter = new TaskFragmentPresenter();
-        presenter.addView(this);
-        presenter.initialize();
-    }
+    protected abstract void initPresenter();
 
     public void updateTask(Task task) {
         adapter.updateTask(task);
@@ -132,5 +128,10 @@ public abstract class TasksFragment extends Fragment implements TasksFragmentVie
     protected void initMenuItems(Menu menu) {
         addTask = menu.findItem(R.id.add_task);
         removeTask = menu.findItem(R.id.remove_task);
+    }
+
+    @Override
+    public void disableRemove() {
+        removeTask.setVisible(false);
     }
 }
